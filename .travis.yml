@@ -1,0 +1,18 @@
+sudo: required
+language: go
+services:
+- docker
+go:
+- 1.8.1
+install:
+- go get github.com/Masterminds/glide
+before_script: 
+script:
+- "./build.sh"
+deploy:
+  provider: releases
+  api_key:
+    secure: N4Df0pJ8JWChJHeEAfrzE8+HWFV4VP/AzT2/stflRIamO+WxUr3QRtN0tsGxqpt95QqomhtqeHXHUPrYHJz3W8V1Tlf8gBJa5aLbkmtdnhOTNAvr0wGyI83iaBjLfzbTz3vwsMyrtdd8N/2D2XKFV/gcvaXB5dJb7f75v45120qYRMj8SdOnDjYs3yRG5+YudN9rEV9+j7w1qtcBWq96ZTJYWB/dsui6Ku7gjlU+HHMStwACNv+bNToSO2ZHESGr69uqeEmx0fd14J9/rfU5YBE6it/hOaWj6kgohOLSwGM7cnSE48MVtQTehLnCN3OajvtxRUxanDSg5pGjUXgX6i+iEmNfMH1BwHNBzWYNF5AyKezqMUtewTvmFjn+4jWY6DAACy4/Dk3+ixMNqGL177QcguV37X3QIaM6lwnIXdFdFgLvtag+XxL9MqqBGrjMbkkMA3/I1nLsoJDfBeiZV33t7mvHO6ppF/iiHtRShF8+LS9X+BWUgvLPo4N3Rh/bBh+Zix1KW31oKfMYRN/R6pzTm7ObwHBsO1NUWaGJL/hWM0ZuBTcqZAnDKShCiQY6VWphZfF1Qw4jirj7JgCyWkE3No3Sa4A2qGxIVUEsIOEqGALIm0eJNIBZWTpZO+r/NdKHzOzbCbFtwmfVG+9TMsy4aFhrtg2KJJjnGN4owc0=
+  file: bin/calico-upgrade
+  on:
+    tags: true
